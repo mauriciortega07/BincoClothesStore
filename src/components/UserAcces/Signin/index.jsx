@@ -24,7 +24,7 @@ const Signin = () => {
                         type="text"
                         name="name"
                         value={name}
-                        
+                        onChange={handleInputChange}
                         placeholder="Ingresa tu nombre"
                         required />
                 </div>

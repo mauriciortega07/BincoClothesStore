@@ -1,30 +1,26 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"
 import useHandleInputChangeAndSubmit from "../../../hooks/useHandleInputChangeAndSubmit";
 
 const Signin = () => {
 
     const {
-        name,
-        lastname,
-        birthday,
-        email,
-        password,
+        form,
         handleInputChange,
-        handleSubmit
-    } = useHandleInputChangeAndSubmit;
-
+        handleSubmitSignin
+    } = useHandleInputChangeAndSubmit()
 
     return (
         <section>
             <h3>REGISTRO</h3>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmitSignin}>
                 <div>
                     <label>Nombre: </label>
                     <input
                         type="text"
                         name="name"
-                        value={name}
-                        onChange={handleInputChange}
+                        value={form.name}
+                        onChange={(e) => handleInputChange(e)}
                         placeholder="Ingresa tu nombre"
                         required />
                 </div>
@@ -33,8 +29,8 @@ const Signin = () => {
                     <input
                         type="text"
                         name="lastname"
-                        value={lastname}
-                        onChange={handleInputChange}
+                        value={form.lastname}
+                        onChange={(e) => handleInputChange(e)}
                         placeholder="Ingresa un apellido"
                         required
                     />
@@ -44,8 +40,8 @@ const Signin = () => {
                     <input
                         type="date"
                         name="birthday"
-                        value={birthday}
-                        onChange={handleInputChange}
+                        value={form.birthday}
+                        onChange={(e) => handleInputChange(e)}
                         required
                     />
                 </div>
@@ -54,8 +50,8 @@ const Signin = () => {
                     <input
                         type="email"
                         name="email"
-                        value={email}
-                        onChange={handleInputChange}
+                        value={form.email}
+                        onChange={(e) => handleInputChange(e)}
                         placeholder="Ingresa tu correo electronico"
                         required
                     />
@@ -65,8 +61,8 @@ const Signin = () => {
                     <input
                         type="password"
                         name="password"
-                        value={password}
-                        onChange={handleInputChange}
+                        value={form.password}
+                        onChange={(e) => handleInputChange(e)}
                         placeholder="Ingresa tu contraseña"
                     />
                 </div>

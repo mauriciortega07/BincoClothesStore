@@ -1,15 +1,27 @@
 import React from "react";
+import useHandleInputChangeAndSubmit from "../../../hooks/useHandleInputChangeAndSubmit";
 
 const Login = () => {
+    
+const {
+    form,
+    handleSubmitLogin,
+    handleInputChange
+} = useHandleInputChangeAndSubmit();
+
     return (
         <section>
             <h3>ACCESO</h3>
-            <form>
+            <form onSubmit={handleSubmitLogin}>
                 <div>
                     <label>Correo</label>
                     <input
                         type="email"
                         placeholder="Ingresa tu correo"
+                        name="email"
+                        value={form.email}
+                        onChange={(e) => handleInputChange(e)}
+                        required
                     />
                 </div>
                 <div>
@@ -17,10 +29,14 @@ const Login = () => {
                     <input
                         type="password"
                         placeholder="Ingresa tu contraseña"
+                        name="password"
+                        value={form.password}
+                        onChange={(e) => handleInputChange(e)}
+                        required
                     />
                 </div>
                 <div>
-                    <button type="submit">Registrarse</button>
+                    <button type="submit">Iniciar Session</button>
                 </div>
             </form>
         </section>

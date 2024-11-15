@@ -22,7 +22,7 @@ const useHandleInputChangeAndSubmit = () => {
         );
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmitSignin = (e) => {
         e.preventDefault();
 
         const { name, lastname, birthday, email, password } = form;
@@ -31,7 +31,7 @@ const useHandleInputChangeAndSubmit = () => {
         const isUserRegistered = Users.find((user) => user.email === email)
 
         if (isUserRegistered) {
-            return (<p>Usuario Registrado</p>)
+            alert ("Usuario ya Registrado");
         } else {
             Users.push({
                 name: name,
@@ -41,13 +41,31 @@ const useHandleInputChangeAndSubmit = () => {
                 password: password
             })
             localStorage.setItem("users", JSON.stringify(Users))
-            return (
-                <p>Registro Exitoso</p>
-            )
+            alert ("Usuario Registrado Exitosamente");
+            navigate("/Inicio")
+
         }
     }
 
-    return {form, handleInputChange, handleSubmit}
+    const handleSubmitLogin = (e) => {
+        e.preventDefault();
+
+        const {email, password} = form;
+
+        const Users = JSON.parse(localStorage.getItem('users') || '[]');
+
+        const validUsers = Users.find(user => user.email === email && user.password === password);
+
+        if (!validUsers) {
+            alert("Usuario no encontrado")
+        } else {
+            alert("Bienvenido!")
+            localStorage.setItem('user_session', JSON.stringify(validUsers));
+            navigate("/Inicio")
+        }
+    }
+
+    return {form, handleInputChange, handleSubmitSignin, handleSubmitLogin}
     
 }
 

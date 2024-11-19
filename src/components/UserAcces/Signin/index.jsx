@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import useHandleInputChangeAndSubmit from "../../../hooks/useHandleInputChangeAndSubmit";
+import { ContentForm, Form, TextInput } from "./styles";
+import { TitleForm } from "../Login/styles";
 
 const Signin = () => {
 
@@ -11,22 +13,21 @@ const Signin = () => {
     } = useHandleInputChangeAndSubmit()
 
     return (
-        <section>
-            <h3>REGISTRO</h3>
-            <form onSubmit={handleSubmitSignin}>
-                <div>
+        <ContentForm className="signinForm">
+            <TitleForm>REGISTRO</TitleForm>
+            <Form onSubmit={handleSubmitSignin}>
+                
                     <label>Nombre: </label>
-                    <input
+                    <TextInput
                         type="text"
                         name="name"
                         value={form.name}
                         onChange={(e) => handleInputChange(e)}
                         placeholder="Ingresa tu nombre"
                         required />
-                </div>
-                <div>
+
                     <label>Apellidos: </label>
-                    <input
+                    <TextInput
                         type="text"
                         name="lastname"
                         value={form.lastname}
@@ -34,20 +35,18 @@ const Signin = () => {
                         placeholder="Ingresa un apellido"
                         required
                     />
-                </div>
-                <div>
+
                     <label>Fecha de Nacimeinto</label>
-                    <input
+                    <TextInput
                         type="date"
                         name="birthday"
                         value={form.birthday}
                         onChange={(e) => handleInputChange(e)}
                         required
                     />
-                </div>
-                <div>
+
                     <label>Correo: </label>
-                    <input
+                    <TextInput
                         type="email"
                         name="email"
                         value={form.email}
@@ -55,22 +54,19 @@ const Signin = () => {
                         placeholder="Ingresa tu correo electronico"
                         required
                     />
-                </div>
-                <div>
+
                     <label>Contraseña: </label>
-                    <input
+                    <TextInput
                         type="password"
                         name="password"
                         value={form.password}
                         onChange={(e) => handleInputChange(e)}
                         placeholder="Ingresa tu contraseña"
                     />
-                </div>
-                <div>
+
                     <button type="submit">Registrarse</button>
-                </div>
-            </form>
-        </section>
+            </Form>
+        </ContentForm>
     )
 
 }

@@ -1,6 +1,6 @@
 const Theme = {
     colors: {
-        primary: "#cbd025",
+        primary: "#e2c42b",
         second: "#fad57d",
         footerMain: "#131212",
         footerLinks: "#bbb9b9"

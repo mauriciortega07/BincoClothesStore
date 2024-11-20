@@ -8,16 +8,16 @@ import SearchBox from "../../SearchBox";
 
 const ProductsAll = () => {
 
-    const {searchText, handleInputSearchText} = useHandleInputSearchText();
+    const { searchText, handleInputSearchText } = useHandleInputSearchText();
 
     const { products, isLoading, error } = useGetData("https://fakestoreapi.com/products");
 
     return (
         <>
-            <Header/>
-            <SearchBox searchText={searchText.searchText} functionInput = {handleInputSearchText}/>
+            <Header />
             <main>
-                {renderAll(isLoading, error, products,searchText)}
+                <SearchBox searchText={searchText.searchText} functionInput={handleInputSearchText} />
+                {renderAll(isLoading, error, products, searchText)}
             </main>
             <Footer />
         </>

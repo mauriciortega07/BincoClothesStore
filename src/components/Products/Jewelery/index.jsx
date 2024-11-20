@@ -7,16 +7,16 @@ import useHandleInputSearchText from "../../../hooks/useHandleInputSearchText";
 import SearchBox from "../../SearchBox";
 
 const Jewelery = () => {
-    const {searchText, handleInputSearchText} = useHandleInputSearchText();
+    const { searchText, handleInputSearchText } = useHandleInputSearchText();
 
-    const {isLoading, error, products} = useGetData('https://fakestoreapi.com/products/category/jewelery');
+    const { products, isLoading, error } = useGetData('https://fakestoreapi.com/products/category/jewelery');
 
-    return(
+    return (
         <>
-            <Header/>
-            <SearchBox searchText={searchText.searchText} functionInput = {handleInputSearchText}/>
+            <Header />
             <main>
-                {renderAll(isLoading, error, products,searchText)}
+                <SearchBox searchText={searchText.searchText} functionInput={handleInputSearchText} />
+                {renderAll(isLoading, error, products, searchText)}
             </main>
             <Footer />
         </>

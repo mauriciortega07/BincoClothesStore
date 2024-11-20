@@ -1,37 +1,52 @@
 import React from "react";
+import { ArticleProduct, DivDescription, DivLoading, LabelLoading, ProductImage, ProductsGrid } from "./styles";
 
 const renderResults = (products) => (
-        <section>
-            {
-                products.map((product) => {
-                    const { id, category, description, image, price, title } = product;
-                    return (
-                        <article key={id}>
-                            <div>
-                                <img src={image} />
-                            </div>
-                            <div>
-                                <label>{title}</label>
-                                <p>{description}</p>
-                                <p>Categoria: {category}</p>
-                                <p>Precio: ${price}</p>
-                            </div>
+    <ProductsGrid>
+        {
+            products.map((product) => {
+                const { id, category, description, image, price, title } = product;
 
-                        </article>
-                    )
-                })
-            }
-        </section>
+                function truncate(str, maxlength) {
+                    return (str.length > maxlength) ?
+                        str.slice(0, maxlength - 1) + '…' : str;
+                }
+                return (
+                    <ArticleProduct key={id}>
+                        <div style={{ textAlign: "center" }}>
+                            <ProductImage src={image} alt="product-image" />
+                        </div>
+                        <DivDescription>
+                            <label>{title}</label>
+                            <p>{truncate(description, 80)}</p>
+                            <p>Categoria: {category}</p>
+                            <p>Precio: ${price}</p>
+                            <button>Agregar al Carrito</button>
+                        </DivDescription>
+
+                    </ArticleProduct>
+                )
+            })
+        }
+    </ProductsGrid>
 )
 
 
 const renderAll = (isLoading, error, products, searchText) => {
     console.log(searchText.searchText)
-    const productFilter = products.filter(product => product.title.toLowerCase() === searchText.searchText)
+    const productFilter = products.filter(product => product.title.trim() === searchText.searchText)
     console.log(productFilter)
-    if (isLoading) return <label>CARGANDO NUESTRO CATALOGO</label>
-    if (error) return <label>SERVICIO EN MANTENIMIENTO</label>
-    if(searchText.searchText === "") return renderResults(products)
+    if (isLoading) return (
+        <DivLoading>
+            <LabelLoading>CARGANDO NUESTRO CATALOGO</LabelLoading>
+        </DivLoading>
+    )
+    if (error) return (
+        <DivLoading>
+            <LabelLoading>SERVICIO EN MANTENIMIENTO</LabelLoading>
+        </DivLoading>
+    )
+    if (searchText.searchText === "") return renderResults(products)
     return renderResults(productFilter)
 }
 

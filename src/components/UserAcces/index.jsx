@@ -7,9 +7,8 @@ import Footer from "./../Footer/index"
 const UserAcces = ({ image }) => {
     const [signinShow, setSigninShow] = useState(false);
 
-    const ShowSign = (signinShow) => {
+    const ShowSign = () => {
         setSigninShow(true)
-        console.log(signinShow)
     }
 
     return (
@@ -22,11 +21,11 @@ const UserAcces = ({ image }) => {
             <MainContent>
                 <SectionForms>
                     <Login />
-                    {signinShow ? (<Signin />) : (<></>)}
+                    {signinShow && (<Signin />)}
                 </SectionForms>
                 <CreateCount>
                     {
-                        signinShow ? (<></>) : (
+                        signinShow || (
                             <>
                                 <p>¿No tienes una cuenta?</p>
                                 <button className="createLogin" onClick={ShowSign}>Crear una cuenta</button>

@@ -1,5 +1,5 @@
 import React from "react";
-import { ArticleProduct, DivDescription, DivLoading, LabelLoading, ProductImage, ProductsGrid } from "./styles";
+import { ArticleProduct, ButtonAddCart, DivDescription, DivLoading, DivProductImage, LabelLoading, ProductDescription, ProductImage, ProductsGrid } from "./styles";
 
 const renderResults = (products) => (
     <ProductsGrid>
@@ -11,17 +11,18 @@ const renderResults = (products) => (
                     return (str.length > maxlength) ?
                         str.slice(0, maxlength - 1) + '…' : str;
                 }
+
                 return (
                     <ArticleProduct key={id}>
-                        <div style={{ textAlign: "center" }}>
+                        <DivProductImage>
                             <ProductImage src={image} alt="product-image" />
-                        </div>
+                        </DivProductImage>
                         <DivDescription>
                             <label>{title}</label>
-                            <p>{truncate(description, 80)}</p>
+                            <ProductDescription>{truncate(description, 80)}</ProductDescription>
                             <p>Categoria: {category}</p>
                             <p>Precio: ${price}</p>
-                            <button>Agregar al Carrito</button>
+                            <ButtonAddCart>Agregar al Carrito</ButtonAddCart>
                         </DivDescription>
 
                     </ArticleProduct>
@@ -33,9 +34,9 @@ const renderResults = (products) => (
 
 
 const renderAll = (isLoading, error, products, searchText) => {
-    console.log(searchText.searchText)
-    const productFilter = products.filter(product => product.title.trim() === searchText.searchText)
-    console.log(productFilter)
+    const articleSearch = searchText.searchText
+    const productFilter = products.filter(product => product.title.trim().toLowerCase().indexOf(articleSearch.toLowerCase()) > -1)
+    console.log(productFilter);
     if (isLoading) return (
         <DivLoading>
             <LabelLoading>CARGANDO NUESTRO CATALOGO</LabelLoading>
@@ -46,7 +47,12 @@ const renderAll = (isLoading, error, products, searchText) => {
             <LabelLoading>SERVICIO EN MANTENIMIENTO</LabelLoading>
         </DivLoading>
     )
-    if (searchText.searchText === "") return renderResults(products)
+    if (articleSearch === "") return renderResults(products)
+    if (productFilter == false) return (
+        <DivLoading>
+            <LabelLoading>NO SE ENCONTRARON PRODUCTOS</LabelLoading>
+        </DivLoading>
+    )
     return renderResults(productFilter)
 }
 

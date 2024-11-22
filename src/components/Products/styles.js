@@ -6,7 +6,7 @@ const DivLoading = styled.div`
     align-items: center;
     display: flex;
     width: 100%;
-    height: 35vw;
+    height: 50vw;
     justify-content: center;
 `
 const LabelLoading = styled.label`
@@ -21,11 +21,20 @@ const ProductsGrid = styled.section`
     grid-column-gap: 1vw;
     grid-row-gap: 1vw;
 `
+const DivProductImage = styled.div`
+    text-align: center;
+`
 
 const ProductImage = styled.img`
     width: 17vw;
     padding: 1vw;
     box-sizing: border-box;
+    transition: all .20s ease-in;
+    cursor: pointer;
+
+    &:hover {
+    transform: scale(1.05)
+    }
 `
 
 const ArticleProduct = styled.article`
@@ -47,12 +56,38 @@ const DivDescription = styled.div`
     text-align: center;
 `
 
+const ProductDescription = styled.p`
+    font-weight: 300;
+    font-size: 14px;
+
+`
+
+const ButtonAddCart = styled.button`
+    height: 3vw;
+    width: 12.2vw;
+    font-family: Kanit, arial, helvetica;
+    border: none;
+    border-radius: 10px;
+    background-color: #eaf193;
+    transition: all .25s ease-in;
+    cursor:pointer;
+
+    &:hover {
+        background-color: #a1e4fa;
+        transform: scale(1.05)
+    }
+
+`
+
 export {
     DivLoading,
     LabelLoading,
     ProductsGrid,
+    DivProductImage,
     ProductImage,
     ArticleProduct,
-    DivDescription
+    ProductDescription,
+    DivDescription,
+    ButtonAddCart
 
 }

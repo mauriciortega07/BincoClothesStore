@@ -22,7 +22,9 @@ const ProductsGrid = styled.section`
     grid-row-gap: 1vw;
 `
 const DivProductImage = styled.div`
+    align-content: center;
     text-align: center;
+    height: 27vw;
 `
 
 const ProductImage = styled.img`

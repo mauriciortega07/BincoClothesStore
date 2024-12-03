@@ -71,6 +71,7 @@ const ButtonAddCart = styled.button`
     border: none;
     border-radius: 10px;
     background-color: #eaf193;
+    color: #424f4e;
     transition: all .25s ease-in;
     cursor:pointer;
 

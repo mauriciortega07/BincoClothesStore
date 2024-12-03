@@ -8,6 +8,15 @@ const SectionSearchBox = styled.section`
     align-items: center;
 `
 
+const LabelSearchBox = styled.label`
+    margin: 1vw;
+`
+const InputSearchBox = styled.input`
+    margin: .5vw;
+`
+
 export {
-    SectionSearchBox
+    SectionSearchBox,
+    LabelSearchBox,
+    InputSearchBox
 }

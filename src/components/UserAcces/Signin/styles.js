@@ -7,18 +7,23 @@ const ContentForm = styled.div`
     background-color: ${props => props.theme.colors.primary};
 `
 
-const TitleForm = styled.h2`
+const TitleForm = styled.h1`
     text-align: center;
     margin: .8vw;
     font-size: 2vw;
 `
 
 const Form = styled.form`
-    margin: 1vw;
+    text-align: center;
+`
+
+const FormElements = styled.div`
+    margin: 2vw;
     display: flex;
     gap: 10px;
     flex-direction: column;
     align-items: center;
+
 `
 
 const TextInput = styled.input`
@@ -35,5 +40,6 @@ export {
     ContentForm,
     TitleForm,
     Form,
-    TextInput
+    TextInput,
+    FormElements
 }

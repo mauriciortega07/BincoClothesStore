@@ -9,7 +9,7 @@ const Header = ({ productSearch }) => {
     return (
         <HeaderContentMain>
             <div>
-                <Link to="/Inicio"><HeaderLogo src={logo} className="logoHeaderMain" /></Link>
+                <Link to="/Inicio"><HeaderLogo src={logo} className="logoHeaderMain" alt="Logotipo de Binco" aria-label="Click para ir al inicio"/></Link>
             </div>
             <HeaderNavMain>
 

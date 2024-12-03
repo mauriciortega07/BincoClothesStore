@@ -2,7 +2,7 @@ import React from "react";
 import { ArticleProduct, ButtonAddCart, DivDescription, DivLoading, DivProductImage, LabelLoading, ProductDescription, ProductImage, ProductsGrid } from "./styles";
 
 const renderResults = (products) => (
-    <ProductsGrid>
+    <ProductsGrid role="grid">
         {
             products.map((product) => {
                 const { id, category, description, image, price, title } = product;
@@ -15,10 +15,10 @@ const renderResults = (products) => (
                 return (
                     <ArticleProduct key={id}>
                         <DivProductImage>
-                            <ProductImage src={image} alt="product-image" />
+                            <ProductImage src={image} alt={`Producto: ${title}`} />
                         </DivProductImage>
                         <DivDescription>
-                            <label>{title}</label>
+                            <h1>{title}</h1>
                             <ProductDescription>{truncate(description, 80)}</ProductDescription>
                             <p>Categoria: {category}</p>
                             <p>Precio: ${price}</p>

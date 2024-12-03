@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import { SectionSearchBox } from "./styles";
+import { InputSearchBox, LabelSearchBox, SectionSearchBox } from "./styles";
 
 const SearchBox = ({searchText, functionInput}) => {
 
     
     return(
         <SectionSearchBox>
-        <p style={{margin:'1vw'}}>Bucas algo en especial?</p> 
-        <input 
+        <LabelSearchBox for="searchBox">Bucas algo en especial?</LabelSearchBox> 
+        <InputSearchBox 
+        id="searchBox"
         type="text"
         placeholder="Buscar.."
+        role="searchbox"
         name="searchText"
         value={searchText}
         onChange={(e) => functionInput(e)}
-        style={{margin:'.5vw'}}
         />
         </SectionSearchBox>
     )

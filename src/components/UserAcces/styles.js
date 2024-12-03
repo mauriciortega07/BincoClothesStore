@@ -22,7 +22,7 @@ const MainContent = styled.main`
     width: 100%;
     padding: 1vw;
     box-sizing: border-box;
-    height: 40vw;
+    height: 100%;
     background-color: ${props => props.theme.colors.second};
 `
 

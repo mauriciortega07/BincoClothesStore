@@ -33,7 +33,7 @@ const HeaderNavLink =  styled.a`
     padding: .5vw;
     cursor: pointer;
     transition: all .25s ease;
-    color: #c60000;
+    color: #a40303;
 
     &:hover {
     color: #403535;

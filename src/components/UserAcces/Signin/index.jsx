@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import useHandleInputChangeAndSubmit from "../../../hooks/useHandleInputChangeAndSubmit";
-import { ContentForm, Form, TextInput } from "./styles";
+import { ContentForm, Form, FormElements, TextInput } from "./styles";
 import { TitleForm } from "../Login/styles";
 
 const Signin = () => {
@@ -16,18 +16,22 @@ const Signin = () => {
         <ContentForm className="signinForm">
             <TitleForm>REGISTRO</TitleForm>
             <Form onSubmit={handleSubmitSignin}>
-                
-                    <label>Nombre: </label>
+                <FormElements>
+                    <label for="name">Nombre:</label>
                     <TextInput
+                        id="name"
                         type="text"
                         name="name"
                         value={form.name}
                         onChange={(e) => handleInputChange(e)}
                         placeholder="Ingresa tu nombre"
                         required />
+                </FormElements>
 
-                    <label>Apellidos: </label>
+                <FormElements>
+                    <label for="lastname">Apellidos:</label>
                     <TextInput
+                        id="lastname"
                         type="text"
                         name="lastname"
                         value={form.lastname}
@@ -35,18 +39,25 @@ const Signin = () => {
                         placeholder="Ingresa un apellido"
                         required
                     />
+                </FormElements>
 
-                    <label>Fecha de Nacimeinto</label>
+                <FormElements>
+                    <label for="birthday">Fecha de Nacimeinto</label>
                     <TextInput
+                        id="birthday"
                         type="date"
                         name="birthday"
+                        aria-label="Abrir calendario para seleccioanr su fecha de nacimiento"
                         value={form.birthday}
                         onChange={(e) => handleInputChange(e)}
                         required
                     />
+                </FormElements>
 
-                    <label>Correo: </label>
+                <FormElements>
+                    <label for="emailSignin">Correo: </label>
                     <TextInput
+                        id="emailSignin"
                         type="email"
                         name="email"
                         value={form.email}
@@ -54,17 +65,21 @@ const Signin = () => {
                         placeholder="Ingresa tu correo electronico"
                         required
                     />
+                </FormElements>
 
-                    <label>Contraseña: </label>
+                <FormElements>
+                    <label for="passwordSignin">Contraseña: </label>
                     <TextInput
+                        id="passwordSignin"
                         type="password"
                         name="password"
                         value={form.password}
                         onChange={(e) => handleInputChange(e)}
                         placeholder="Ingresa tu contraseña"
                     />
+                </FormElements>
 
-                    <button type="submit">Registrarse</button>
+                <button type="submit">Registrarse</button>
             </Form>
         </ContentForm>
     )
